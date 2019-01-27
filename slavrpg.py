@@ -61,5 +61,11 @@ async def on_message_delete(message):
     avtor = message.author
     content = message.content
     channel = message.channel
-    await client.send_message(channel, '{} deleted a message. It was: \n`{}`'.format(avtor, content))
+    await client.send_message(channel, '{} deleted a message. It was: \n**`{}`**'.format(avtor, content))
+
+@client.event
+async def on_message(message):
+    channel = message.channel
+    if message.content.startswith('.ping'):
+        await client.send_message(channel, '**`Pong!`**')
 client.run('NTM4NzY0NTM1OTk0MjUzMzQ4.Dy5cFw.nd6cwfdHPNoYUVGpBgI2TdsPakE')
