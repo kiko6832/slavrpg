@@ -11,7 +11,7 @@ Clientdiscord = discord.Client()
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=Game(name='HardBass',type = 2))
+    await client.change_presence(game=Game(name='Solviet Union Anthem',type = 2))
     print("SlavRPG Bot | Python 3.6.5 -> ONLINE")
 
         
