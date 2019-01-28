@@ -25,20 +25,6 @@ async def on_message_delete(message):
         await client.send_message(channel, '{} deleted a message. It was: \n**`{}`**'.format(avtor, content))
         await client.process_commands(message)
 
-@client.event
-async def on_message(message):
-        channel = message.channel
-        if message.content.startswith('.ping'):
-         await client.send_message(channel, '**`Pong!`**')
-        await client.process_commands(message)
-
-@client.event
-async def on_message(message):
-        channel = message.channel
-        if message.content.startswith('.ligma'):
-         await client.send_message(channel, '**`Ligma Balls!`**')
-        await client.process_commands(message)
-        
 @client.command()
 async def help():
         embed = discord.Embed(
@@ -87,6 +73,13 @@ async def settings():
 @client.command()
 async def vote():
         await client.say('`Vote link: `')
-    
+
+@client.command()
+async def ligma():
+        await client.say('`Ligma Balls! `')
+
+@client.command()
+async def ping():
+        await client.say('`Pong!`')
 
 client.run('NTM4NzY0NTM1OTk0MjUzMzQ4.Dy5cFw.nd6cwfdHPNoYUVGpBgI2TdsPakE')
