@@ -12,8 +12,20 @@ Clientdiscord = discord.Client()
 client.remove_command('help')
 
 @client.event
+async def status_task():
+        while True:
+                await client.change_presence(game=Game(name='the Solviet Union Anthem.',type = 2))
+                await asyncio.sleep(10)
+                await client.change_presence(game=Game(name='chess with Stalin.',type = 0))
+                await asyncio.sleep(10)
+                await client.change_presence(game=Game(name='.help',type = 0))
+                await asyncio.sleep(10)
+                await client.change_presence(game=Game(name='with '+ str(len(client.servers)) +' servers.',type = 0))
+                await asyncio.sleep(10)
+
+@client.event
 async def on_ready():
-        await client.change_presence(game=Game(name='Solviet Union Anthem',type = 2))
+        client.loop.create_task(status_task())
         print("SlavRPG Bot | Python 3.6.5 -> ONLINE")
         print(f"Logged in as {client.user}")
     
@@ -70,6 +82,23 @@ async def settings():
         embed.add_field(name=':gear:**Soon!**',value='**`Soon!`**', inline=False)
         await client.say(embed=embed)
 
+@client.command(pass_context=True)
+async def clear(ctx, amount=10):
+        channel = ctx.message.channel
+        messages = []
+        async for message in client.logs_from(channel, limit=int(amount)+1):
+                messages.append(message)
+                await client.delete_messages(messages)
+                await client.say((amount)+'Messages deleted')
+                await client.say('If you want to delete the confirmation message type `.clearc`')
+
+@client.command(pass_context=True)
+async def clearc(ctx):
+        channel = ctx.message.channel
+        messages = []
+        async for message in client.logs_from(channel, limit=int(1)):
+                messages.append(message)
+                await client.delete_messages(messages)
 @client.command()
 async def vote():
         await client.say('`Vote link: `')
@@ -80,6 +109,6 @@ async def ligma():
 
 @client.command()
 async def ping():
-        await client.say('`Pong!`') 
-    
+        await client.say('`Pong!`')
+
 client.run('NTM4NzY0NTM1OTk0MjUzMzQ4.Dy5cFw.nd6cwfdHPNoYUVGpBgI2TdsPakE')
