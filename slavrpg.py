@@ -65,7 +65,8 @@ async def random():
         embed.set_footer(text='SlavRPG Bot - GameKiller02BG - 2019')
         embed.add_field(name=':ping_pong:**Ping**',value='**`Replies Pong!`**', inline=True)
         embed.add_field(name=':middle_finger:**Ligma**',value='**`Surprise!`**', inline=True)
-        embed.add_field(name=':speaking_head:**Clear (amount)**',value='**`Clears the choosen amount of messages.`**', inline=True)
+        embed.add_field(name=':speaking_head:**Clear (amount)**',value='**`Clears the choosen amount of messages.`**', inline=False)
+        embed.add_field(name=':envelope:**Am (@user#1234) (message)**',value='**`Sends anonimous message to choosen user`**', inline=False)
         await client.say(embed=embed)
 @client.command()
 async def settings():
@@ -104,4 +105,13 @@ async def am(ctx, member: discord.Member, *msg):
         messages.append(message)
     await client.delete_messages(messages)
     await client.say('%s Messages deleted' %(amount))
+@client.command(pass_context=True)
+async def join(ctx):
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice_channel(channel)
+@client.command(pass_context=True)
+async def leave(ctx):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    await voice_client.disconnect()
 client.run('NTM4NzY0NTM1OTk0MjUzMzQ4.Dy5cFw.nd6cwfdHPNoYUVGpBgI2TdsPakE')
