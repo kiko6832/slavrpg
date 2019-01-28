@@ -80,6 +80,11 @@ async def ligma():
 
 @client.command()
 async def ping():
-        await client.say('`Pong!`')
+        await client.say('`Pong!`') 
 
+@client.event()
+async def on_mesaage
+        if mesaage.startswith('Az')
+        await client.say('I az tei')
+        
 client.run('NTM4NzY0NTM1OTk0MjUzMzQ4.Dy5cFw.nd6cwfdHPNoYUVGpBgI2TdsPakE')
