@@ -114,4 +114,4 @@ async def leave(ctx):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
-client.run('NTM4NzY0NTM1OTk0MjUzMzQ4.Dy5cFw.nd6cwfdHPNoYUVGpBgI2TdsPakE')
+client.run('NTM4NzY0NTM1OTk0MjUzMzQ4.XEyRkw.b_PUoWFZ7FqEmUB5IZmOZLK57w8')
